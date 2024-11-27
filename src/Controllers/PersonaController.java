@@ -54,32 +54,31 @@ public class PersonaController {
         }
     }
 
-    public int binarySearchbyAge(Persona[] people, int targetAge, int maxAge) {
-        int low = 0;
-        int high = people.length - 1;
-    
-        while (low <= high) {
-            int mid = low + (high - low) / 2; 
-    
-            if (people[mid].getAge() == targetAge) {
-                return mid; 
-            } else if (people[mid].getAge() < targetAge) {
-                low = mid + 1; 
+    public int binarySearchbyAge(Persona[] people, int Age1) {
+        int left = 0;
+        int right = people.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (people[mid].getAge() == Age1) {
+                return mid;
+            } else if (people[mid].getAge() < Age1) {
+                left = mid + 1;
             } else {
-                high = mid - 1; 
+                right = mid - 1;
             }
         }
-    
+
         return -1;
     }
-    
 
     public void sortByNameWithInsertion(Persona[] people) {
         int n = people.length;
         for (int i = 1; i < n; i++) {
             Persona key = people[i];
             int j = i - 1;
-    
+
             while (j >= 0 && people[j].getname().compareTo(key.getname()) > 0) {
                 people[j + 1] = people[j];
                 j = j - 1;
@@ -88,20 +87,24 @@ public class PersonaController {
         }
     }
 
-    public void binarySearchbyName(Persona[] people, String name,String nam){
+    public int binarySearchbyName(Persona[] people, String name) {
         int left = 0;
         int right = people.length - 1;
+
         while (left <= right) {
-            int mid = left + (left - right) / 2;
+            int mid = left + (right - left) / 2;
+
             if (people[mid].getname().equals(name)) {
-                return;
+                return mid; // Se encontró el nombre
             }
-            if(people[mid].getname().compareTo(name)>0){
-                left = mid + 1;
-            }else{
-                right = mid - 1;
+
+            if (people[mid].getname().compareTo(name) < 0) {
+                left = mid + 1; // Buscar en la mitad derecha
+            } else {
+                right = mid - 1; // Buscar en la mitad izquierda
             }
-            return;
         }
+
+        return -1; // No se encontró el nombre
     }
 }
