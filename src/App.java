@@ -1,4 +1,5 @@
 
+import Controllers.PersonaController;
 import Models.Persona;
 
 public class App {
@@ -36,30 +37,26 @@ public class App {
                                 new Persona("Miguel", 52)
                 };
 
-                /// TODOS los métodos deben ser implementados en la clase PersonaController
-                // Crear una instancia de la clase PersonaController y llamar a los métodos
-                // NO usar metodos estaticos
+                PersonaController persona1 = new PersonaController();
 
-                // 1 - Implementar un método para ordenar las personas por edad en orden
-                // desecendente tipo selección
-
-                // 1.2 - Buscar a la persona con las sigueintes edaddes en el arreglo de
-                // personas ya ordenarod por edad
-                // - 25
-                // - 70
-
-                // 2 - Implementar un método para ordenar las personas por su nombre en orden
-                // ascendente tipo inserción
-
-                // 2.2 - Buscar a la persona con los sigueintes nombres en el arreglo de
-                // personas ya ordenarod por nombre
-                // - "Anais"
-                // - "Miguel"
-
-                // Imprimir:
-                // el arreglo ordenado para cada punto 1 y 2
-                // Si encontró a la persona en el arreglo de personas los datos de dicha persona
-                // y su posición
-                // Si no encontró a la persona en el arreglo de personas
-        }
+                System.out.println("método de ordenamiento por edad");
+                persona1.sortByAgeWithSelection(personas);
+        
+                System.out.println("Metodo de busqueda Binaria por edad");
+                persona1.binarySearchbyAge(personas, 25, 70);
+        
+                System.out.println("método de ordenamiento por nombre");
+                persona1.sortByNameWithInsertion(personas);
+        
+                System.out.println("búsqueda binaria por nombr");
+                persona1.binarySearchbyName(personas, "Anais", "Miguel");
+        
+                System.out.println("Ejecución finalizada.");
+            }
 }
+
+// Imprimir:
+// el arreglo ordenado para cada punto 1 y 2
+// Si encontró a la persona en el arreglo de personas los datos de dicha persona
+// y su posición
+// Si no encontró a la persona en el arreglo de personas
